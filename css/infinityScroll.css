@@ -1,0 +1,53 @@
+.container {
+	max-width: 750px;
+	padding: 0 1rem;
+	margin: 1.5rem auto;
+	color: rgb(235,235,235);
+	font-size: 1rem;
+}
+
+.post {
+	background-color: #272a30;
+	padding: 25px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+.post h3 {
+	color: yellowgreen;
+}
+
+
+.loader-box {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.loader-box.hidden {
+	display: none;
+}
+
+.circle {
+	border: 15px solid #4e5d6c;
+	border-radius: 50%;
+	border-top: 15px solid #9aaec2;
+	width: 100px;
+	height: 100px;
+	animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	
+	100% {
+		transform: rotate(360deg);
+	}
+}

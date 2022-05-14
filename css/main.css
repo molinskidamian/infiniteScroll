@@ -13,8 +13,13 @@
 
 html {
   color: #222;
-  font-size: 1em;
   line-height: 1.4;
+}
+
+body {
+	box-sizing: border-box;
+	font-size: 16px;
+	font-family: 'Helvetica';
 }
 
 /*
