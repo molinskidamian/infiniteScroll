@@ -12,6 +12,7 @@ class InfiniteScroll {
 	constructor(container, loader){
 		this.container = container;
 		this.loader = loader;
+		this.loading = false;
 		this.page = 1;
 		this.init();
 	}
@@ -21,6 +22,8 @@ class InfiniteScroll {
 		window.addEventListener("scroll", () => {
 			// console.log(Math.floor(window.scrollY));
 			// console.log(window.scrollY.toFixed(1)); // toFixed(1) - ogranicz wyniki do jednego miejsca po przecinku
+			
+			if(this.loading) return;
 			if(window.scrollY + window.innerHeight >= document.body.offsetHeight){
 				this.setLoading(true);
 				this.getData();
@@ -34,9 +37,12 @@ class InfiniteScroll {
 		} else {
 			this.loader.classList.add("hidden");
 		}
+		
+		this.loading = flag;
 	}
 	
 	getData = async () => {
+		console.log("getData")
 		const apiUrl = `https://jsonplaceholder.typicode.com/posts?_page=${this.page}&_limit=4`;
 		try {
 			const res = await fetch(apiUrl);
@@ -51,7 +57,7 @@ class InfiniteScroll {
 	
 	displayPosts(posts){
 		this.container.innerHTML += posts.map(post => {
-			 console.log(post);
+			 // console.log(post);
 			return `
 				<div class="post">
 					<h3>${this.capitalizeFirstLetter(post.title)}</h3>
